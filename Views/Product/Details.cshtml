@@ -1,0 +1,54 @@
+@model ProductCatalog.Models.Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        .product {
+            border: 1px solid #999;
+            padding: 25px;
+            width: 450px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Product Details</h2>
+
+    <div class="product">
+
+        <h3>@Model.Name</h3>
+
+        <p><b>Category:</b> @Model.Category</p>
+
+        <p><b>Price:</b> Rs. @Model.Price</p>
+
+        <p><b>Description:</b> @Model.Description</p>
+
+        @Html.ActionLink("Add to Cart", "AddToCart",
+            new { id = Model.Id }, new { @class = "button" })
+
+        @Html.ActionLink("Back to Products", "Index",
+            null, new { @class = "button" })
+
+    </div>
+
+</body>
+</html>

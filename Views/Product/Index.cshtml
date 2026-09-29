@@ -1,0 +1,90 @@
+@model IEnumerable<ProductCatalog.Models.Product>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Catalog</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .top {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 90%;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 12px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+
+        .button {
+            background-color: #333;
+            color: white;
+            padding: 7px 12px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Product Catalog</h2>
+
+    <div class="top">
+        @Html.ActionLink("View Cart", "Cart", null, new { @class = "button" })
+    </div>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Category</td>
+                <td>Rs. @p.Price</td>
+                <td>@p.Description</td>
+                <td>
+                    @Html.ActionLink("View Product", "Details",
+                        new { id = p.Id }, new { @class = "button" })
+                </td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+@model IEnumerable<ProductCatalog.Models.Product>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 70%;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 12px;
+        }
+
+        .button {
+            background-color: #333;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Shopping Cart</h2>
+
+    @if (!Model.Any())
+    {
+        <p>Your cart is empty.</p>
+    }
+    else
+    {
+        <table>
+
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@p.Category</td>
+                    <td>Rs. @p.Price</td>
+                </tr>
+            }
+
+        </table>
+    }
+
+    <br />
+
+    @Html.ActionLink("Continue Shopping", "Index",
+        null, new { @class = "button" })
+
+</body>
+</html>
